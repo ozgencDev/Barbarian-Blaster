@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmmrmo7n8c6xq"]
+[gd_scene load_steps=8 format=3 uid="uid://dmmrmo7n8c6xq"]
 
+[ext_resource type="PackedScene" uid="uid://bv7gbdkawif84" path="res://Enemy/enemy.tscn" id="1_5sbch"]
 [ext_resource type="MeshLibrary" uid="uid://b2lii3tfjahx3" path="res://MeshLibrary/SpaceLibrary.tres" id="1_vp3ct"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blrqv"]
@@ -18,6 +19,13 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_in11u"]
 albedo_color = Color(0.247059, 0.247059, 0.247059, 1)
 
+[sub_resource type="Curve3D" id="Curve3D_c8tfh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.7105, 0, 6.11775, -1, 0, 1, 1, 0, -1, 14, 0, 6, 1, 0, 1, -1, 0, -1, 14, 0, -2, 1, 0, 1, -1, 0, -1, -10, 0, -2, 0, 0, 0, 0, 0, 0, -10, 0, -6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -34,6 +42,26 @@ size = Vector3(100, 2, 100)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_c8tfh")
+
+[node name="Path" type="CSGPolygon3D" parent="Path3D"]
+polygon = PackedVector2Array(-1.3, 0, -1.3, 0.1, 1.3, 0.1, 1.3, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.39
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Enemy" parent="Path3D" instance=ExtResource("1_5sbch")]
+transform = Transform3D(0.00329697, 0, -0.999974, 0, 1, 0, 0.999974, 0, 0.00329697, -21.7105, 0, 6.11775)
+speed = 12.475
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_vp3ct")
