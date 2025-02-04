@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmmrmo7n8c6xq"]
+[gd_scene load_steps=9 format=3 uid="uid://dmmrmo7n8c6xq"]
 
 [ext_resource type="PackedScene" uid="uid://bv7gbdkawif84" path="res://Enemy/enemy.tscn" id="1_5sbch"]
 [ext_resource type="MeshLibrary" uid="uid://b2lii3tfjahx3" path="res://MeshLibrary/SpaceLibrary.tres" id="1_vp3ct"]
+[ext_resource type="PackedScene" uid="uid://dvympovo5pb6o" path="res://Base/base.tscn" id="3_nn78s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_blrqv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,7 +22,7 @@ albedo_color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_c8tfh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.7105, 0, 6.11775, -1, 0, 1, 1, 0, -1, 14, 0, 6, 1, 0, 1, -1, 0, -1, 14, 0, -2, 1, 0, 1, -1, 0, -1, -10, 0, -2, 0, 0, 0, 0, 0, 0, -10, 0, -6),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.7105, 0, 6.11775, -1, 0, 1, 1, 0, -1, 14, 0, 6, 1, 0, 1, -1, 0, -1, 14, 0, -2, 1, 0, 1, -1, 0, -1, -10, 0, -2, 0, 0, 0, 0, 0, 0, -10.1521, 0.0401592, -6.06085),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -47,7 +48,36 @@ transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 
 curve = SubResource("Curve3D_c8tfh")
 
 [node name="Path" type="CSGPolygon3D" parent="Path3D"]
-polygon = PackedVector2Array(-1.3, 0, -1.3, 0.1, 1.3, 0.1, 1.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+polygon = PackedVector2Array(-1.1, 0, -1.1, 0.15, 1, 0.1, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.39
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Left" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+polygon = PackedVector2Array(-1.1, 0, -1.1, 0.2, -0.9, 0.2, -0.9, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.39
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Right" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+polygon = PackedVector2Array(0.9, 0, 0.9, 0.2, 1.1, 0.2, 1.1, 0)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -63,6 +93,26 @@ path_joined = false
 transform = Transform3D(0.00329697, 0, -0.999974, 0, 1, 0, 0.999974, 0, 0.00329697, -21.7105, 0, 6.11775)
 speed = 12.475
 
+[node name="Enemy2" parent="Path3D" instance=ExtResource("1_5sbch")]
+transform = Transform3D(-0.0208045, 0, -0.999763, 0, 1, 0, 0.999763, 0, -0.0208045, -16.7119, 0, 6.23087)
+progress = 5.0
+speed = 12.475
+
+[node name="Enemy3" parent="Path3D" instance=ExtResource("1_5sbch")]
+transform = Transform3D(-0.0173951, 0, -0.999828, 0, 1, 0, 0.999828, 0, -0.0173951, -11.7129, 0, 6.32651)
+progress = 10.0
+speed = 12.475
+
+[node name="Enemy4" parent="Path3D" instance=ExtResource("1_5sbch")]
+transform = Transform3D(-0.0133378, 0, -0.999891, 0, 1, 0, 0.999891, 0, -0.0133378, -6.71335, 0, 6.40375)
+progress = 15.0
+speed = 12.475
+
+[node name="Enemy5" parent="Path3D" instance=ExtResource("1_5sbch")]
+transform = Transform3D(-0.00783519, 0, -0.999949, 0, 1, 0, 0.999949, 0, -0.00783519, -1.71363, 0, 6.45752)
+progress = 20.0
+speed = 12.475
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_vp3ct")
 cell_size = Vector3(4, 4, 4)
@@ -70,3 +120,5 @@ cell_center_y = false
 data = {
 "cells": PackedInt32Array(65535, 65534, 0, 65535, 2, 0, 65534, 2, 0, 0, 2, 0, 65533, 2, 0, 1, 2, 0, 65532, 2, 0, 2, 2, 0, 3, 2, 0, 65531, 2, 0, 4, 2, 0, 65531, 65534, 0, 65531, 65535, 0, 65531, 0, 0, 65532, 65534, 0, 65534, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 4, 65535, 0, 4, 0, 0, 4, 1, 0, 65532, 65535, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0)
 }
+
+[node name="Base" parent="." instance=ExtResource("3_nn78s")]
