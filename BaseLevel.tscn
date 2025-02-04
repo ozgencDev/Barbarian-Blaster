@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmmrmo7n8c6xq"]
+[gd_scene load_steps=10 format=3 uid="uid://dmmrmo7n8c6xq"]
 
+[ext_resource type="PackedScene" uid="uid://dc6ta6xhpx4mt" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_0q81t"]
 [ext_resource type="PackedScene" uid="uid://bv7gbdkawif84" path="res://Enemy/enemy.tscn" id="1_5sbch"]
 [ext_resource type="MeshLibrary" uid="uid://b2lii3tfjahx3" path="res://MeshLibrary/SpaceLibrary.tres" id="1_vp3ct"]
 [ext_resource type="PackedScene" uid="uid://dvympovo5pb6o" path="res://Base/base.tscn" id="3_nn78s"]
@@ -41,8 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_in11u")
 size = Vector3(100, 2, 100)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+[node name="RayPickerCamera" parent="." instance=ExtResource("1_0q81t")]
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_c8tfh")
@@ -90,26 +90,26 @@ path_u_distance = 1.0
 path_joined = false
 
 [node name="Enemy" parent="Path3D" instance=ExtResource("1_5sbch")]
-transform = Transform3D(0.00329697, 0, -0.999974, 0, 1, 0, 0.999974, 0, 0.00329697, -21.7105, 0, 6.11775)
+transform = Transform3D(0.00329721, 0, -0.999974, 0, 1, 0, 0.999974, 0, 0.00329721, -21.7105, 0, 6.11775)
 speed = 12.475
 
 [node name="Enemy2" parent="Path3D" instance=ExtResource("1_5sbch")]
-transform = Transform3D(-0.0208045, 0, -0.999763, 0, 1, 0, 0.999763, 0, -0.0208045, -16.7119, 0, 6.23087)
+transform = Transform3D(-0.0208044, 0, -0.999763, 0, 1, 0, 0.999763, 0, -0.0208044, -16.7118, 0, 6.23088)
 progress = 5.0
 speed = 12.475
 
 [node name="Enemy3" parent="Path3D" instance=ExtResource("1_5sbch")]
-transform = Transform3D(-0.0173951, 0, -0.999828, 0, 1, 0, 0.999828, 0, -0.0173951, -11.7129, 0, 6.32651)
+transform = Transform3D(-0.0173951, 0, -0.999828, 0, 1, 0, 0.999828, 0, -0.0173951, -11.7128, 0, 6.32651)
 progress = 10.0
 speed = 12.475
 
 [node name="Enemy4" parent="Path3D" instance=ExtResource("1_5sbch")]
-transform = Transform3D(-0.0133378, 0, -0.999891, 0, 1, 0, 0.999891, 0, -0.0133378, -6.71335, 0, 6.40375)
+transform = Transform3D(-0.0133377, 0, -0.999891, 0, 1, 0, 0.999891, 0, -0.0133377, -6.71331, 0, 6.40375)
 progress = 15.0
 speed = 12.475
 
 [node name="Enemy5" parent="Path3D" instance=ExtResource("1_5sbch")]
-transform = Transform3D(-0.00783519, 0, -0.999949, 0, 1, 0, 0.999949, 0, -0.00783519, -1.71363, 0, 6.45752)
+transform = Transform3D(-0.00783495, 0, -0.999949, 0, 1, 0, 0.999949, 0, -0.00783495, -1.71359, 0, 6.45752)
 progress = 20.0
 speed = 12.475
 
