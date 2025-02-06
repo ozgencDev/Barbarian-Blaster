@@ -127,6 +127,7 @@ data = {
 
 [node name="Base" parent="." instance=ExtResource("3_nn78s")]
 
-[node name="TurretManager" type="Node3D" parent="."]
+[node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_piyug")
 turret = ExtResource("6_plplw")
+enemy_path = NodePath("../Path3D")
