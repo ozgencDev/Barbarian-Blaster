@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg88xsx60tj8s"]
+[gd_scene load_steps=8 format=3 uid="uid://cg88xsx60tj8s"]
+
+[ext_resource type="Script" path="res://Turret/turret.gd" id="1_16l0p"]
+[ext_resource type="PackedScene" uid="uid://q4h6ibskeq2" path="res://Turret/projectile.tscn" id="1_g88a7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ki0qd"]
 height = 1.0
@@ -24,6 +27,8 @@ bottom_radius = 0.1
 height = 0.1
 
 [node name="Turret" type="Node3D"]
+script = ExtResource("1_16l0p")
+projectile = ExtResource("1_g88a7")
 
 [node name="TurretBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
