@@ -3,7 +3,7 @@ extends Camera3D
 @export var gridmap: GridMap
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
-
+@export var turret_manager: Node3D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,5 +20,7 @@ func _process(delta: float) -> void:
 				var cell = gridmap.local_to_map(collision_point)
 				if gridmap.get_cell_item(cell) == 0: #for bug purposes
 					gridmap.set_cell_item(cell, 1)
+					var g_pos = gridmap.map_to_local(cell)
+					turret_manager.build_turret(g_pos)
 	else:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
