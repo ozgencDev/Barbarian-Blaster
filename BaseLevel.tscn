@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmmrmo7n8c6xq"]
+[gd_scene load_steps=17 format=3 uid="uid://dmmrmo7n8c6xq"]
 
 [ext_resource type="PackedScene" uid="uid://dc6ta6xhpx4mt" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_0q81t"]
 [ext_resource type="PackedScene" uid="uid://bv7gbdkawif84" path="res://Enemy/enemy.tscn" id="1_5sbch"]
@@ -37,6 +37,12 @@ point_count = 5
 font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_swqdh"]
+min_value = 10.0
+max_value = 150.0
+_data = [Vector2(0, 10), 0.0, 140.0, 0, 1, Vector2(1, 150), 140.0, 0.0, 1, 0]
+point_count = 2
 
 [node name="Node3D" type="Node3D"]
 
@@ -117,6 +123,7 @@ data = {
 }
 
 [node name="Base" parent="." instance=ExtResource("3_nn78s")]
+max_health = 50
 
 [node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_piyug")
@@ -144,5 +151,7 @@ text = "gold:"
 label_settings = SubResource("LabelSettings_yl6ok")
 
 [node name="DifficultyManager" parent="." instance=ExtResource("9_pt5x6")]
+enemy_health_curve = SubResource("Curve_swqdh")
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]
+[connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]
