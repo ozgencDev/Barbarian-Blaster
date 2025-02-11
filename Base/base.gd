@@ -4,7 +4,6 @@ extends Node3D
 
 var current_health: int:
 	set(health_in):
-		print("deneme")
 		current_health = health_in
 		label_3d.text = str(current_health) + "/" + str(max_health)
 		var red: Color = Color.RED
@@ -18,6 +17,7 @@ var current_health: int:
 
 func _ready() -> void:
 	current_health = max_health
+	Engine.time_scale = 10
 
 func take_damage() -> void:
 	print("hasar aldı")

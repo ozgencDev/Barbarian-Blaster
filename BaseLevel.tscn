@@ -62,11 +62,12 @@ size = Vector3(100, 2, 100)
 gridmap = NodePath("../GridMap")
 turret_manager = NodePath("../TurretManager")
 
-[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager")]
+[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager", "victory_layer")]
 curve = SubResource("Curve3D_c8tfh")
 script = ExtResource("2_blikr")
 enemy_scene = ExtResource("1_5sbch")
 difficulty_manager = NodePath("../DifficultyManager")
+victory_layer = NodePath("../VictoryLayer")
 
 [node name="Path" type="CSGPolygon3D" parent="EnemyPath"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
@@ -152,6 +153,17 @@ label_settings = SubResource("LabelSettings_yl6ok")
 
 [node name="DifficultyManager" parent="." instance=ExtResource("9_pt5x6")]
 enemy_health_curve = SubResource("Curve_swqdh")
+
+[node name="VictoryLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="VictoryLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.431373)
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]
 [connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]

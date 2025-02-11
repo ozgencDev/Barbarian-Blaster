@@ -14,7 +14,6 @@ var current_health: int:
 		if health_in < current_health:
 			animation_player.play("TakeDamage")
 		current_health = health_in
-		print(current_health)
 		if(current_health < 1):
 			queue_free()
 			bank.gold += coin
@@ -31,7 +30,6 @@ func take_damage() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	progress += delta * speed
-	print(progress)
 	if progress_ratio == 1.0:
 		base.take_damage()
 		set_process(false)

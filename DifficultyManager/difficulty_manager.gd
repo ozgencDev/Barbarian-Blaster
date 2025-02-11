@@ -13,10 +13,6 @@ func _ready() -> void:
 	timer.start(game_length)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	print(game_progress_ratio())
-
 func game_progress_ratio() -> float:
 	return 1.0 - (timer.time_left / game_length)
 
