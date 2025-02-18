@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 
 func take_damage() -> void:
-	current_health -= 5
+	current_health -= 50
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
