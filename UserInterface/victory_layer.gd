@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var money_label: Label = %MoneyLabel
 
 @onready var base = get_tree().get_first_node_in_group('base')
-@onready var base = get_tree().get_first_node_in_group('bank')
+@onready var bank = get_tree().get_first_node_in_group('bank')
 
 func victory() -> void:
 	visible = true
